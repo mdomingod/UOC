@@ -2,7 +2,7 @@
 # El dataframe utilitzat per l'exploració prové de l'objecte creat per la classe SummarizedExperiment.
 # Per tant, primer de tot importarem l'objecte "se_object":
 
-load("~/CDocuments/MDescàrregues/UOC/3r/Òmiques/PAC 1/Domingo_Domènech_Marta_PEC1/se_object_Phospho.rda")
+load("se_object_Phospho.rda")
 
 
 # Definició de les dades del objecte a la variable "Phospho".
