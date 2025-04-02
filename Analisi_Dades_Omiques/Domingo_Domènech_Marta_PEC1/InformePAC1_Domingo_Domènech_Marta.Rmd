@@ -1,0 +1,340 @@
+---
+title: "Anàlisi de dades òmiques. PAC 1"
+author: "Marta Domingo Domènech"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Selecció de dades
+
+```{r}
+library(readxl)
+Datacat <- read_excel("../metaboData/Data_Catalog.xlsx")
+colnames(Datacat)
+```
+
+```{r}
+head(Datacat)
+```
+
+```{r}
+Datacat$Description
+```
+
+Després d'haver llegit la descripció de cada data set, escullo treballar amb el segon data set: "2018-Phosphoproteomics".
+
+```{r}
+# Codi per accedir al data set (2018-Phosphoproteomics) escollit des del repositori de git hub clonat al directori local del meu pc.
+
+DataSetPhospho <- read_excel("../metaboData/Datasets/2018-Phosphoproteomics/TIO2+PTYR-human-MSS+MSIvsPD.xlsx")
+colnames(DataSetPhospho)
+```
+
+```{r}
+head(DataSetPhospho)
+```
+
+## 2. Creació d'un objecte de la classe SummarizedExperiment.
+
+Ha de contenir les dades i les metadades (informació sobre el dataset, les seves files i columnes).
+
+```{r}
+library(S4Vectors)
+library(SummarizedExperiment)
+```
+
+1.  Creació del dataframe anomenat "row_data" amb la informació de cada feature (fila). En aquest dataframe hi recollirem les metadades de cada feature: "SequenceModifications, Accession, Description, Score, CLASS, PHOSPHO":
+
+```{r}
+row_data <- DataFrame(
+  SequenceModifications = DataSetPhospho$SequenceModifications, 
+  Accession = DataSetPhospho$Accession, 
+  Description = DataSetPhospho$Description, 
+  Score = DataSetPhospho$Score,
+  CLASS = DataSetPhospho$CLASS,
+  PHOSPHO = DataSetPhospho$PHOSPHO
+)
+
+# Definició dels rownames amb la informació de la columna "Accession".
+rownames(row_data) <- row_data$Accession
+```
+
+2.  Construcció de la matriu "assay_matrix" amb les columnes del dataset les quals contenent les dades númeriques:
+
+```{r}
+assay_matrix <- as.matrix(
+DataSetPhospho[, c("M1_1_MSS", "M1_2_MSS", "M5_1_MSS", "M5_2_MSS",
+"T49_1_MSS", "T49_2_MSS",
+"M42_1_PD", "M42_2_PD", "M43_1_PD", "M43_2_PD",
+"M64_1_PD", "M64_2_PD")]
+)
+```
+
+```{r}
+# Assignació dels mateixos noms de fila que a rowData (row_data).
+rownames(assay_matrix) <- rownames(row_data)
+```
+
+3.  Creació del dataframe colData classificant la informació de les mostres entre els dos mètodes d'anàlisi emprats: MSS i PD.
+
+```{r}
+sample_names <- c("M1_1_MSS", "M1_2_MSS", "M5_1_MSS", "M5_2_MSS",
+                  "T49_1_MSS", "T49_2_MSS", "M42_1_PD", "M42_2_PD", 
+                  "M43_1_PD", "M43_2_PD", "M64_1_PD", "M64_2_PD")
+method <- c(rep("MSS", 6), rep("PD", 6))
+
+col_data <- DataFrame(
+  sample = sample_names, 
+  method = method
+)
+
+# Fer coincidir rownames(col_data) amb la matriu
+rownames(col_data) <- col_data$sample
+
+col_data
+```
+
+```{r}
+# Codi per reordenar les dades de col_data en cas de que no coincideixen amb les de la matriu assay_matrix:
+col_data <- col_data[colnames(assay_matrix), ]
+col_data
+```
+
+4.  Creació de l'objecte SummarizedExperiment.
+
+```{r}
+se_object <- SummarizedExperiment(
+  assays = list(abundance = assay_matrix), 
+  rowData = row_data, 
+  colData = col_data
+)
+```
+
+5.  Revisió de l'objecte creat "se_object".
+
+```{r}
+se_object  # Mostra el resum de l'objecte.
+```
+
+```{r}
+save(se_object, file = "se_object_Phospho.rda")
+```
+
+```{r}
+dim(se_object) # Hauria de ser 1438 features x 12 mostres.
+```
+
+```{r}
+rowData(se_object) # Metadades de cada feature.
+```
+
+```{r}
+colData(se_object) # Metadades de cada mostra.
+```
+
+```{r}
+head(assays(se_object)$abundance) # Les primere files de la matriu de dades.
+```
+
+### 2.1. SummarizedExperiment vs ExpressionSet
+
+La classe SummarizedExperiment es pot considerar una evolució o substitució més recent de la classe ExpressionSet dins lʼecosistema de Bioconductor. Tot i que comparteixen la idea bàsica de contenir dades dʼexpressió i metadades associades, SummarizedExperiment presenta diverses diferències rellevants.
+
+**Diferències estructurals:**
+
+1.  **Estructura dʼemmagatzematge de dades:**
+
+    -   ExpressionSet disposa dʼun sol array dʼexpressió (exprs).
+
+    -   SummarizedExperiment admet múltiples “assays” en el compartiment assays, útil per gestionar conjuntament dades crues, normalitzades o dʼaltres tipus en un mateix objecte.
+
+2.  **Informació genòmica integrada (rowRanges):**
+
+    -   ExpressionSet no incorpora informació sobre les posicions genòmiques.
+
+    -   SummarizedExperiment inclou el compartiment rowRanges, que emmagatzema coordenades i metadades genòmiques de cada fila, útil per a dades de seqüenciació.
+
+3.  **Metadades en forma de DataFrame:**
+
+    -   ExpressionSet utilitza pData (per a mostres) i fData (per a característiques) com slots de metadades, que són data.frames base de R.
+
+    -   SummarizedExperiment empra colData (per a mostres) i rowData (per a característiques) que són objectes de tipus DataFrame, més flexibles i consistents amb altres paquets bioconductor.
+
+**Versatilitat i escalabilitat:**
+
+-   ExpressionSet va ser concebut principalment per a dades de microarrays, amb una sola matriu dʼexpressió.
+
+-   SummarizedExperiment és més flexible i pensat per gestionar dades dʼRNA-seq, ATAC-seq, proteòmica, metabolòmica i altres dades multimodals, gràcies a la possibilitat de tenir múltiples assays i integració amb la infraestructura genòmica.
+
+**Integració amb Bioconductor:**
+
+-   SummarizedExperiment sʼha convertit en lʼestàndard per a moltes eines i fluxos de treball Bioconductor, especialment aquells que fan servir GenomicRanges.
+
+-   ExpressionSet encara es fa servir en aplicacions i paquets antics, però la majoria de paquets nous de Bioconductor opten per SummarizedExperiment.
+
+En resum, SummarizedExperiment és una classe més flexible i adaptada a lʼanàlisi multimodal i amb integració genòmica, mentre que ExpressionSet sʼenfoca en un únic array dʼexpressió i amb metadades més senzilles. Això fa que SummarizedExperiment sigui lʼopció recomanada en la major part de pipelines de dades òmiques actuals.
+
+## 3. Anàlisi exploratòri de les dades Phospho.
+
+```{r}
+# Definició de les dades en una variable.
+Phospho <- assays(se_object)$abundance # Defining the data on a variable.
+Phospho <- data.frame(Phospho)
+Phospho
+
+```
+
+```{r}els}
+dim(Phospho)
+```
+
+```{r}
+names(Phospho)
+```
+
+```{r}
+# Estadístiques per columna.
+View(data.frame(round(apply(Phospho,2, summary)))  )
+```
+
+Amb el resum estadístic es pot observar l'escala de les dades. En aquest cas, el que crida l'atenció és veure la diferència entre els valors mínims i els valors màixims que van del zero a valors de magnitud de $10^7$. Això indica que s'hauran de tractar les dades abans de començar a estudiar-les amb mètodes estadísitcs.
+
+Els histogrames i els bloxpots són una bona eina per vitsualitzar les dades de manera gràfica.
+
+```{r}
+# Histogrames de les dades originals
+histo <- par(mfrow = c(3, 4))
+for (i in 1:ncol(Phospho)) {
+  hist(Phospho[, i], main = names(Phospho)[i])
+}
+par(histo)
+```
+
+L'histograma evidència que cal aplicar una transformació logarítmica per rebaixar els valors més alts i expandir els més petits, disminuïnt així la diferència entre ambdos valors.
+
+En un dataset on la variable “x” pot prendre el valor zero (o valors molt petits), log(x) és matemàticament problemàtic quan x = 0, perquè log(0) no està definit (és -∞). Per això, sovint s’utilitza log(x + 1):\
+• Si x = 0, llavors log(1) = 0, de manera que no es produeix cap error ni valor infinit.\
+• Això evita haver d’eliminar les observacions que tinguin x = 0 (cosa que podria esbiaixar l’anàlisi).\
+• És una transformació comuna en casos on x representa coses com comptes (counts), on zero pot tenir un significat estadísticament rellevant.
+
+```{r}
+Phospho_log <- Phospho
+Phospho_log <- log(Phospho_log + 1)
+
+View(Phospho_log)
+```
+
+```{r}
+histo_log <- par(mfrow=c(3,4)) 
+
+for (i in 1:ncol(Phospho_log))
+  hist(Phospho_log[,i], main = names(Phospho_log)[i])
+
+par(histo_log)
+```
+
+Una opció millor és fer servir boxplots, que permeten visualitzar totes les mostres alhora i ofereixen pistes sobre la conveniència de fer algun tipus de preprocessament.#
+
+```{r}
+# Boxplot amb les dades tractades pel logaritme (Phospho_log).
+par(mar=c(7, 4, 4, 2))
+groupColor <- c(rep("red", 6), rep("blue", 6))
+
+boxplot(Phospho_log, col=groupColor, main="Expression values for 12 samples, two groups", 
+        xlab="", 
+        ylab="Expression", las=2, cex.axis=0.7, cex.main=0.7)
+mtext(
+  "Mètodes", 
+  side = 1, 
+  line = 6
+)
+```
+
+Les gràfiques boxplot són molt ilustratives ja que ens mostren si les dades contenen outliers, o bé si les dades són assimètriques. En aquets cas podem observar com les dades tenen bastants outliers i les mitges són molt irregulars.
+
+Havent vist l'heterogeneïtat de les dades mitjançant bloxplot i histogrames i tenint en compte que totes les variables són del mateix tipus, per poder aplicar un anàlisi multivariant correctament, s'han de centrar i normalitzar:
+
+```{r}
+# Centralització i normalització de les dades
+Phospho_log_centered <- scale(Phospho_log, center = TRUE, scale = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+
+# Anàlisi multivariant: PCA --> prcomp
+pca <- prcomp(t(Phospho_log_centered), scale. = TRUE)
+
+# Visualització del PCA
+pca_data <- data.frame(pca$x)
+pca_data$method <- col_data$method
+
+ggplot(pca_data, aes(x = PC1, y = PC2, color = method)) +
+  geom_point(size = 3) +
+  labs(title = "PCA of phosphopeptides", x = "PC1", y = "PC2") +
+  theme_minimal()
+```
+
+Quan les dades contenent més variables que observacions el mètode princomp() no és tan felxible com el prcomp i no és capaç de fer el càlcul multivariant. Per això si intentem executar aquesta funció ens apareix un missatge d'error indicant "princomp can only be used with more units than variable".
+
+Per evitar confusions degut a l'efecte batch, és a dir evitar variacions sitemàtiques les quals no estan relacionades amb les variables d'interès, sino amb amb el processament de les mostres, es duen a terme una sèrie d'anàlisis. En aquest cas només es realitzaran anàlisis de detecció.
+
+```{r}
+X <- Phospho_log_centered
+# Funció plotPCA
+plotPCA <- function ( X, labels=NULL, colors=NULL, dataDesc="", scale=FALSE, cex4text=0.8)
+{
+  pcX <- prcomp(t(X), scale.=scale)  # Utilitzar t(X) per transposar la matriu
+  loads <- round(pcX$sdev^2/sum(pcX$sdev^2)*100, 1)
+  xlab <- c(paste("PC1", loads[1], "%"))
+  ylab <- c(paste("PC2", loads[2], "%"))
+  if (is.null(colors)) colors <- 1
+  plot(pcX$x[, 1:2], xlab=xlab, ylab=ylab, col=colors,  
+       xlim=c(min(pcX$x[, 1])-10, max(pcX$x[, 1])+10),
+       ylim=c(min(pcX$x[, 2])-10, max(pcX$x[, 2])+10))
+  text(pcX$x[, 1], pcX$x[, 2], labels, pos=3, cex=cex4text)
+  title(paste("Plot of first 2 PCs for expressions in", dataDesc, sep=" "), cex=0.8)
+}
+
+# Aplicar la funció plotPCA al dataset Phospho_log_centered.
+labels <- col_data$sample
+colors <- as.numeric(factor(col_data$method))
+dataDesc <- "Phospho_log_centered dataset"
+
+plotPCA(Phospho_log_centered, labels=labels, colors=colors, dataDesc=dataDesc)
+```
+
+La gràfica PCA mostra una clara separació entre les mostres MSS i PD, suggerint que les diferències en les expressions de fosforilació entre aquestes condicions són significatives i que l'efecte batch no és un factor predominant en aquest dataset.
+
+Per últim executarem un estudi basat en distàncies amb la funció heatmap(). Aquest estudi consisteix en calcular una matriu de distàncies i visualitzant-la mitjançant un mapa de colors.
+
+```{r}
+manDist <- dist(t(X))
+heatmap (as.matrix(manDist), col=heat.colors(16))
+```
+
+El heatmap mostra una clara separació entre les mostres MSS i PD, amb cada grup formant clústers separats. Les mostres dins de cada grup són més similars entre elles, mentre que les mostres de diferents grups (MSS vs PD) tenen distàncies més grans i menor similitud. Això suggereix que les diferències observades en les expressions de fosforilació entre MSS i PD són significatives i que l'efecte batch no és predominant en aquest dataset.
+
+## Dades en format text
+
+```{r}
+write.table(DataSetPhospho, file = "DataSetPhospho_dataset.txt", sep = "\t", row.names = FALSE, col.names = TRUE)
+```
+
+```{r}
+write.table(Phospho, file = "Phospho_dataframe_only_rawdata.txt", sep = "\t", row.names = FALSE, col.names = TRUE)
+```
+
+```{r}
+write.table(Phospho_log, file = "Phospho_dataframe_transformedLOG.txt", sep = "\t", row.names = FALSE, col.names = TRUE)
+```
+
+```{r}
+write.table(Phospho_log_centered, file = "Phospho_dataframe_transformedLOG_Centered.txt", sep = "\t", row.names = FALSE, col.names = TRUE)
+```
