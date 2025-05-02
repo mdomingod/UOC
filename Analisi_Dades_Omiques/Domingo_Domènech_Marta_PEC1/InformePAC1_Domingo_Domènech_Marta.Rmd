@@ -188,9 +188,7 @@ Phospho
 
 ```
 
-```{r}els}
-dim(Phospho)
-```
+`{r}els} dim(Phospho)`
 
 ```{r}
 names(Phospho)
