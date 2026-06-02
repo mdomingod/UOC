@@ -1,0 +1,68 @@
+=== Run started: 2026-05-31T21:17:15.014853 ===
+Output directory: /home/domingom/projects/SPE_Primer_Alignments/reports/2026-05-31_211714_baseline_DHS001Z_SplitByPrimer_tv04_bs200_ep50_lr1e-4
+
+MLflow run ID: fb27175a338c45a1b154b997466b7a3c
+
+[1/5] Loading data...
+  Found 5 npz files
+  Total alignments: 183,888
+  Unique primers:   4,832
+  Unique panels:    1
+Zero-UMI:     23,099  (12.6%)
+Positive-UMI: 160,789  (87.4%)
+
+[2/5] Splitting at Primer level...
+  Unique primers in train: 3,866
+  Unique primers in val:   966
+  Primers overlap:          0 ✓
+Label Train — mean: 61.85, std: 186.56, zeros: 12.7%, max: 5851, p99: 839 
+Label Val   — mean: 59.86, std: 183.37, zeros: 12.0%, max: 5620, p99: 820 
+
+Expected val MSE for zero-predictor: 0.9663
+Using device: cpu
+Train: 146518 sites | Val: 37370 sites | 
+Train ds length: 146518 | 
+Val ds length: 37370 | 
+[3/5] Training one run...
+Pre-training preds: min=-0.0066, max=-0.0053, Mean ± Std:    -0.0059 ± 0.0003%zero=0.0%
+Epoch   1 | train loss MSE      0.79 | val loss MSE      0.71 | lr 1.00e-04
+Epoch   2 | train loss MSE      0.72 | val loss MSE      0.68 | lr 1.00e-04
+Epoch   3 | train loss MSE      0.71 | val loss MSE      0.67 | lr 1.00e-04
+Epoch   4 | train loss MSE      0.70 | val loss MSE      0.68 | lr 1.00e-04
+Epoch   5 | train loss MSE      0.69 | val loss MSE      0.66 | lr 1.00e-04
+Epoch   6 | train loss MSE      0.68 | val loss MSE      0.63 | lr 1.00e-04
+Epoch   7 | train loss MSE      0.67 | val loss MSE      0.63 | lr 1.00e-04
+Epoch   8 | train loss MSE      0.66 | val loss MSE      0.62 | lr 1.00e-04
+Epoch   9 | train loss MSE      0.65 | val loss MSE      0.62 | lr 1.00e-04
+Epoch  10 | train loss MSE      0.65 | val loss MSE      0.61 | lr 1.00e-04
+Epoch  11 | train loss MSE      0.64 | val loss MSE      0.61 | lr 1.00e-04
+Epoch  12 | train loss MSE      0.64 | val loss MSE      0.60 | lr 1.00e-04
+Epoch  13 | train loss MSE      0.63 | val loss MSE      0.60 | lr 1.00e-04
+Epoch  14 | train loss MSE      0.63 | val loss MSE      0.59 | lr 1.00e-04
+Epoch  15 | train loss MSE      0.62 | val loss MSE      0.59 | lr 1.00e-04
+Epoch  16 | train loss MSE      0.62 | val loss MSE      0.60 | lr 1.00e-04
+Epoch  17 | train loss MSE      0.62 | val loss MSE      0.60 | lr 1.00e-04
+Epoch  18 | train loss MSE      0.62 | val loss MSE      0.59 | lr 1.00e-04
+Epoch  19 | train loss MSE      0.61 | val loss MSE      0.59 | lr 1.00e-04
+Epoch  20 | train loss MSE      0.61 | val loss MSE      0.59 | lr 1.00e-04
+Epoch  21 | train loss MSE      0.61 | val loss MSE      0.59 | lr 1.00e-04
+Epoch  22 | train loss MSE      0.61 | val loss MSE      0.58 | lr 1.00e-04
+Epoch  23 | train loss MSE      0.61 | val loss MSE      0.58 | lr 1.00e-04
+Epoch  24 | train loss MSE      0.61 | val loss MSE      0.59 | lr 1.00e-04
+Epoch  25 | train loss MSE      0.61 | val loss MSE      0.59 | lr 1.00e-04
+Epoch  26 | train loss MSE      0.60 | val loss MSE      0.58 | lr 1.00e-04
+Epoch  27 | train loss MSE      0.60 | val loss MSE      0.58 | lr 1.00e-04
+Epoch  28 | train loss MSE      0.60 | val loss MSE      0.58 | lr 1.00e-04
+Epoch  29 | train loss MSE      0.60 | val loss MSE      0.58 | lr 1.00e-04
+Epoch  30 | train loss MSE      0.60 | val loss MSE      0.58 | lr 1.00e-04
+Epoch  31 | train loss MSE      0.60 | val loss MSE      0.59 | lr 1.00e-04
+Epoch  32 | train loss MSE      0.60 | val loss MSE      0.58 | lr 1.00e-05
+Epoch  33 | train loss MSE      0.59 | val loss MSE      0.58 | lr 1.00e-05
+Epoch  34 | train loss MSE      0.59 | val loss MSE      0.58 | lr 1.00e-05
+Epoch  35 | train loss MSE      0.59 | val loss MSE      0.58 | lr 1.00e-05
+Epoch  36 | train loss MSE      0.59 | val loss MSE      0.58 | lr 1.00e-05
+Early stopping at epoch 36: no improvement for 10 epochs
+  Training finished in 2114.0s
+  Stopped at epoch 36, best val MSE 0.58 at epoch 26
+
+[4/5] Evaluating on validation set...

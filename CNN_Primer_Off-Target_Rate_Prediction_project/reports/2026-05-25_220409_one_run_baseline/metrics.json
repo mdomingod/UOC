@@ -1,0 +1,27 @@
+{
+  "site_level": {
+    "mse": 37208.110543216484,
+    "rmse": 192.89403967778912,
+    "mae": 59.857827134064756,
+    "pearson": NaN,
+    "spearman": NaN,
+    "n_sites": 37370
+  },
+  "primer_level": {
+    "n_primers": 0,
+    "n_dropped_zero_total": 966,
+    "mean_bias": NaN,
+    "mean_abs_bias": NaN,
+    "rmse": NaN,
+    "pearson": NaN,
+    "spearman": NaN
+  },
+  "training": {
+    "epochs_run": 50,
+    "duration_sec": 638.8083972930908,
+    "best_val_mse": 37202.13666523973,
+    "n_train": 146518,
+    "n_val": 37370,
+    "device": "cpu"
+  }
+}

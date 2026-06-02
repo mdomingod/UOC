@@ -1,0 +1,111 @@
+{
+  "n_total_groups": 107979,
+  "n_mixed_groups": 7,
+  "fraction_mixed": 6.482742014650997e-05,
+  "n_rows_in_mixed_groups": 14,
+  "n_unique_primers": 5,
+  "per_group": [
+    {
+      "primer_tail": "TAAC----------A",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "33675559",
+        "89725107"
+      ],
+      "chromosomes": [
+        "chr10",
+        "chr9"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "TT----------TTC",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "9014741",
+        "9017555"
+      ],
+      "chromosomes": [
+        "chr19"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "CCTAC----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "9014721",
+        "9017535"
+      ],
+      "chromosomes": [
+        "chr19"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "ACAGC----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "126544054",
+        "65082686"
+      ],
+      "chromosomes": [
+        "chr7"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "CTTGC----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "17055458",
+        "178938877"
+      ],
+      "chromosomes": [
+        "chr22",
+        "chr3"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "TTGC-----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "17055457",
+        "178938876"
+      ],
+      "chromosomes": [
+        "chr22",
+        "chr3"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "------------TGC",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "17055456",
+        "178938875"
+      ],
+      "chromosomes": [
+        "chr22",
+        "chr3"
+      ],
+      "n_unique_chromosomes": 2
+    }
+  ]
+}

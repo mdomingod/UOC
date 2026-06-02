@@ -1,0 +1,58 @@
+=== Run started: 2026-05-30T21:19:33.962046 ===
+Output directory: /home/domingom/projects/SPE_Primer_Alignments/reports/2026-05-30_211933_baseline_combineData_SplitByPanel_tv03_bs550_ep50_lr1e-3
+
+MLflow run ID: 3209c1beb23c48f3b3504dd4bddd2a00
+
+[1/5] Loading data...
+  Found 24 npz files
+  Total alignments: 1,808,534
+  Unique primers:   26,552
+  Unique panels:    9
+Zero-UMI:     1,103,200  (61.0%)
+Positive-UMI: 705,334  (39.0%)
+
+[2/5] Splitting at panel level...
+  Unique panel IDs in train: 8
+  Unique panel IDs in val:   1
+  Panel ID overlap:          0 ✓
+Label Train — mean: 23.93, std: 336.38, zeros: 58.0%, max: 52802, p99: 571 
+Label Val   — mean: 16.26, std: 77.82, zeros: 79.3%, max: 3425, p99: 435 
+
+Expected val MSE for zero-predictor: 0.0540
+Using device: cpu
+Train: 1554177 sites | Val: 254357 sites | 
+[3/5] Training one run...
+Pre-training preds: min=-0.0066, max=-0.0052, Mean ± Std:    -0.0058 ± 0.0003%zero=0.0%
+Epoch   1 | train loss MSE      0.97 | val loss MSE      0.05 | lr 1.00e-03
+Epoch   2 | train loss MSE      0.95 | val loss MSE      0.03 | lr 1.00e-03
+Epoch   3 | train loss MSE      0.95 | val loss MSE      0.03 | lr 1.00e-03
+Epoch   4 | train loss MSE      0.95 | val loss MSE      0.03 | lr 1.00e-03
+Epoch   5 | train loss MSE      0.95 | val loss MSE      0.04 | lr 1.00e-03
+Epoch   6 | train loss MSE      0.95 | val loss MSE      0.03 | lr 1.00e-03
+Epoch   7 | train loss MSE      0.95 | val loss MSE      0.03 | lr 1.00e-03
+Epoch   8 | train loss MSE      0.95 | val loss MSE      0.03 | lr 1.00e-03
+Epoch   9 | train loss MSE      0.95 | val loss MSE      0.03 | lr 1.00e-03
+Epoch  10 | train loss MSE      0.94 | val loss MSE      0.03 | lr 1.00e-03
+Epoch  11 | train loss MSE      0.95 | val loss MSE      0.03 | lr 1.00e-03
+Epoch  12 | train loss MSE      0.94 | val loss MSE      0.02 | lr 1.00e-03
+Epoch  13 | train loss MSE      0.94 | val loss MSE      0.02 | lr 1.00e-03
+Epoch  14 | train loss MSE      0.94 | val loss MSE      0.03 | lr 1.00e-03
+Epoch  15 | train loss MSE      0.94 | val loss MSE      0.04 | lr 1.00e-03
+Epoch  16 | train loss MSE      0.95 | val loss MSE      0.06 | lr 1.00e-03
+Epoch  17 | train loss MSE      0.94 | val loss MSE      0.03 | lr 1.00e-03
+Epoch  18 | train loss MSE      0.95 | val loss MSE      0.03 | lr 1.00e-03
+Epoch  19 | train loss MSE      0.94 | val loss MSE      0.03 | lr 1.00e-04
+Epoch  20 | train loss MSE      0.93 | val loss MSE      0.03 | lr 1.00e-04
+Epoch  21 | train loss MSE      0.92 | val loss MSE      0.03 | lr 1.00e-04
+Epoch  22 | train loss MSE      0.92 | val loss MSE      0.03 | lr 1.00e-04
+Epoch  23 | train loss MSE      0.91 | val loss MSE      0.03 | lr 1.00e-04
+Early stopping at epoch 23: no improvement for 10 epochs
+  Training finished in 13941.9s
+  Stopped at epoch 23, best val MSE 0.02 at epoch 13
+
+[4/5] Evaluating on validation set...
+Saving artifacts...
+  All artifacts saved to: /home/domingom/projects/SPE_Primer_Alignments/reports/2026-05-30_211933_baseline_combineData_SplitByPanel_tv03_bs550_ep50_lr1e-3
+  MLflow run ID: 3209c1beb23c48f3b3504dd4bddd2a00
+
+=== Run finished: 2026-05-31T01:12:37.852646 ===

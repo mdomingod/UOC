@@ -1,0 +1,8 @@
+Each run creates a timestamped folder under reports/ (at the project root, outside src/) containing:
+
+report.md — the human-readable summary you can read or paste into your TFM
+metrics.json — machine-readable for later analysis
+primer_table.csv — detailed per-primer breakdown
+training_log.txt — full stdout captured
+model.pt — trained weights for reloading
+config.json — exact configuration used

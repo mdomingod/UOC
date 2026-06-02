@@ -1,0 +1,18 @@
+=== Run started: 2026-05-31T19:43:08.937582 ===
+Output directory: /home/domingom/projects/SPE_Primer_Alignments/reports/2026-05-31_194307_baseline_DHS001Z_SplitByPrimer_tv04_bs200_ep50_lr1e-4
+
+MLflow run ID: 0b00b9ec348f487890d57ecf1451b638
+
+[1/5] Loading data...
+  Found 5 npz files
+  Total alignments: 183,888
+  Unique primers:   4,832
+  Unique panels:    1
+Zero-UMI:     23,099  (12.6%)
+Positive-UMI: 160,789  (87.4%)
+
+[2/5] Splitting at Primer level...
+  Unique panel IDs in train: 1
+  Unique panel IDs in val:   0
+  Panel ID overlap:          0 ✓
+Label Train — mean: 61.45, std: 185.92, zeros: 12.6%, max: 5851, p99: 836 

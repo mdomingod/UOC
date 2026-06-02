@@ -1,0 +1,51 @@
+{
+  "n_total_groups": 8017,
+  "n_mixed_groups": 3,
+  "fraction_mixed": 0.00037420481476861667,
+  "n_rows_in_mixed_groups": 6,
+  "n_unique_primers": 1,
+  "per_group": [
+    {
+      "primer_tail": "TCATG----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "96535206",
+        "96702008"
+      ],
+      "chromosomes": [
+        "chr10"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "ATG------------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "96535204",
+        "96702006"
+      ],
+      "chromosomes": [
+        "chr10"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "--------------G",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "96535202",
+        "96702004"
+      ],
+      "chromosomes": [
+        "chr10"
+      ],
+      "n_unique_chromosomes": 1
+    }
+  ]
+}

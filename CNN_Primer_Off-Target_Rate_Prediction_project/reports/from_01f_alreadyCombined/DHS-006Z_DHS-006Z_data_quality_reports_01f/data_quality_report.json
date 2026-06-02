@@ -1,0 +1,687 @@
+{
+  "n_total_groups": 254357,
+  "n_mixed_groups": 46,
+  "fraction_mixed": 0.0001808481779546071,
+  "n_rows_in_mixed_groups": 103,
+  "n_unique_primers": 40,
+  "per_group": [
+    {
+      "primer_tail": "GTTAT---------C",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "11038980",
+        "151945238"
+      ],
+      "chromosomes": [
+        "chr21",
+        "chr7"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "ATCTCG---------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "120572590",
+        "145248832"
+      ],
+      "chromosomes": [
+        "chr1"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "AAGTTT---------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "197348664",
+        "226072"
+      ],
+      "chromosomes": [
+        "chr3",
+        "chr5"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "AAATCC---------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "11058210",
+        "151970839"
+      ],
+      "chromosomes": [
+        "chr21",
+        "chr7"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "CCTTCC---------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "120539969",
+        "145281354"
+      ],
+      "chromosomes": [
+        "chr1"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "TTATCA---------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "11038979",
+        "151945237"
+      ],
+      "chromosomes": [
+        "chr21",
+        "chr7"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "GAG----------TG",
+      "n_rows": 3,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "195508513",
+        "195508849",
+        "195510529"
+      ],
+      "chromosomes": [
+        "chr3"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "TAAC----------A",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "33675559",
+        "89725107"
+      ],
+      "chromosomes": [
+        "chr10",
+        "chr9"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "CTCG----------C",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "37028317",
+        "37028533"
+      ],
+      "chromosomes": [
+        "chrX"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "CCCA----------G",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "120612067",
+        "145209316"
+      ],
+      "chromosomes": [
+        "chr1"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "GCTCA----------",
+      "n_rows": 3,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "7810463",
+        "7810532",
+        "7810601"
+      ],
+      "chromosomes": [
+        "chr19"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "TGACA----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "10998233",
+        "151904411"
+      ],
+      "chromosomes": [
+        "chr21",
+        "chr7"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "TCTCG----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "120572591",
+        "145248831"
+      ],
+      "chromosomes": [
+        "chr1"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "AAATC----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "1576712",
+        "251164"
+      ],
+      "chromosomes": [
+        "chr5"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "GAC----------TC",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "120548236",
+        "145273159"
+      ],
+      "chromosomes": [
+        "chr1"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "TCCAA----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "148873514",
+        "151935799"
+      ],
+      "chromosomes": [
+        "chr1",
+        "chr7"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "CAGTC----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "34962384",
+        "37029086"
+      ],
+      "chromosomes": [
+        "chrX"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "T----------CCCC",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "37028260",
+        "37028476"
+      ],
+      "chromosomes": [
+        "chrX"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "GCGTC----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "34962238",
+        "37028940"
+      ],
+      "chromosomes": [
+        "chrX"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "TATCC----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "16097871",
+        "57659511"
+      ],
+      "chromosomes": [
+        "chr17",
+        "chr7"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "GAGAG----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "7810873",
+        "7830623"
+      ],
+      "chromosomes": [
+        "chr19"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "TGGTG----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "132494177",
+        "35632918"
+      ],
+      "chromosomes": [
+        "chr13",
+        "chr2"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "AGACT----------",
+      "n_rows": 3,
+      "n_on_target": 100,
+      "n_off_target": 0,
+      "positions": [
+        "148889721",
+        "151919626",
+        "91886498"
+      ],
+      "chromosomes": [
+        "chr1",
+        "chr2",
+        "chr7"
+      ],
+      "n_unique_chromosomes": 3
+    },
+    {
+      "primer_tail": "TT----------TTC",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "9014741",
+        "9017555"
+      ],
+      "chromosomes": [
+        "chr19"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "CCTAC----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "9014721",
+        "9017535"
+      ],
+      "chromosomes": [
+        "chr19"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "TCTG----------T",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "16068357",
+        "25733316"
+      ],
+      "chromosomes": [
+        "chr17",
+        "chr20"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "CATCC----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "34961329",
+        "37026864"
+      ],
+      "chromosomes": [
+        "chrX"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "ACAGT----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "37028182",
+        "37028398"
+      ],
+      "chromosomes": [
+        "chrX"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "GACGG----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "195507406",
+        "195507598"
+      ],
+      "chromosomes": [
+        "chr3"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "GTAT----------C",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "37028322",
+        "37028538"
+      ],
+      "chromosomes": [
+        "chrX"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "CCTTC----------",
+      "n_rows": 4,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "11015471",
+        "151921628",
+        "173314",
+        "91888498"
+      ],
+      "chromosomes": [
+        "chr2",
+        "chr21",
+        "chr7",
+        "chrUn_gl000212"
+      ],
+      "n_unique_chromosomes": 4
+    },
+    {
+      "primer_tail": "AGGTC----------",
+      "n_rows": 3,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "100720872",
+        "110518339",
+        "111368300"
+      ],
+      "chromosomes": [
+        "chr2"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "GACAG----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "120539658",
+        "145281665"
+      ],
+      "chromosomes": [
+        "chr1"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "AGATG----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "120548216",
+        "145273179"
+      ],
+      "chromosomes": [
+        "chr1"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "GTGT----------G",
+      "n_rows": 3,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "11020915",
+        "151927110",
+        "161"
+      ],
+      "chromosomes": [
+        "chr21",
+        "chr7",
+        "chrUn_gl000212"
+      ],
+      "n_unique_chromosomes": 3
+    },
+    {
+      "primer_tail": "GTTT----------G",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "34148128",
+        "37029479"
+      ],
+      "chromosomes": [
+        "chrX"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "GGTA----------G",
+      "n_rows": 4,
+      "n_on_target": 100,
+      "n_off_target": 0,
+      "positions": [
+        "195389485",
+        "195712616",
+        "197350209",
+        "224518"
+      ],
+      "chromosomes": [
+        "chr3",
+        "chr5"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "CTGAA----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "132494204",
+        "35632945"
+      ],
+      "chromosomes": [
+        "chr13",
+        "chr2"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "CTTCC----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "120539968",
+        "145281355"
+      ],
+      "chromosomes": [
+        "chr1"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "CTTGC----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "17055458",
+        "178938877"
+      ],
+      "chromosomes": [
+        "chr22",
+        "chr3"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "CGATG----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "1593242",
+        "236699"
+      ],
+      "chromosomes": [
+        "chr5"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "GGTGT----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "1574430",
+        "254487"
+      ],
+      "chromosomes": [
+        "chr5"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "GTGTG----------",
+      "n_rows": 3,
+      "n_on_target": 100,
+      "n_off_target": 0,
+      "positions": [
+        "148887668",
+        "151921656",
+        "91888526"
+      ],
+      "chromosomes": [
+        "chr1",
+        "chr2",
+        "chr7"
+      ],
+      "n_unique_chromosomes": 3
+    },
+    {
+      "primer_tail": "CTAC-----------",
+      "n_rows": 2,
+      "n_on_target": 1,
+      "n_off_target": 0,
+      "positions": [
+        "9014720",
+        "9017534"
+      ],
+      "chromosomes": [
+        "chr19"
+      ],
+      "n_unique_chromosomes": 1
+    },
+    {
+      "primer_tail": "GTA-----------G",
+      "n_rows": 3,
+      "n_on_target": 100,
+      "n_off_target": 0,
+      "positions": [
+        "195712615",
+        "197350208",
+        "224519"
+      ],
+      "chromosomes": [
+        "chr3",
+        "chr5"
+      ],
+      "n_unique_chromosomes": 2
+    },
+    {
+      "primer_tail": "GTGT-----------",
+      "n_rows": 2,
+      "n_on_target": 10,
+      "n_off_target": 0,
+      "positions": [
+        "1574429",
+        "254488"
+      ],
+      "chromosomes": [
+        "chr5"
+      ],
+      "n_unique_chromosomes": 1
+    }
+  ]
+}

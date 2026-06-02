@@ -1,0 +1,54 @@
+=== Run started: 2026-06-02T11:13:02.075926 ===
+Output directory: /home/domingom/projects/SPE_Primer_Alignments/reports/2026-06-02_111301_baseline_onerun_train_val_test_splitbyPrimer_bs600_ep50_lr1e-3_v1
+
+MLflow run ID: dd25311a58dc46da932ccb3d33b7740c
+
+[1/5] Loading data...
+  Found 22 npz files
+  Total alignments: 1,279,693
+  Unique primers:   18,584
+  Unique panels:    8
+Zero-UMI:     684,118  (53.5%)
+Positive-UMI: 595,575  (46.5%)
+
+[2/5] Splitting at Primer level...
+  Unique primers in train: 13,009
+  Unique primers in val:   5,575
+  Primers overlap:          0 ✓
+Label Train — mean: 26.36, std: 362.57, zeros: 52.6%, max: 52802, p99: 635 
+Label Val   — mean: 28.84, std: 389.24, zeros: 55.8%, max: 51513, p99: 658 
+
+Expected val MSE for zero-predictor: 1.1526
+Using device: cpu
+Train: 921445 sites | Val: 358248 sites | 
+[3/5] Training one run...
+Pre-training preds: min=-0.0066, max=-0.0051, Mean ± Std:    -0.0059 ± 0.0003%zero=0.0%
+Epoch   1 | train loss MSE      0.97 | val loss MSE      1.10 | lr 1.00e-03
+Epoch   2 | train loss MSE      0.96 | val loss MSE      1.11 | lr 1.00e-03
+Epoch   3 | train loss MSE      0.95 | val loss MSE      1.09 | lr 1.00e-03
+Epoch   4 | train loss MSE      0.95 | val loss MSE      1.09 | lr 1.00e-03
+Epoch   5 | train loss MSE      0.95 | val loss MSE      1.10 | lr 1.00e-03
+Epoch   6 | train loss MSE      0.95 | val loss MSE      1.09 | lr 1.00e-03
+Epoch   7 | train loss MSE      0.95 | val loss MSE      1.09 | lr 1.00e-03
+Epoch   8 | train loss MSE      0.94 | val loss MSE      1.09 | lr 1.00e-03
+Epoch   9 | train loss MSE      0.95 | val loss MSE      1.09 | lr 1.00e-03
+Epoch  10 | train loss MSE      0.95 | val loss MSE      1.09 | lr 1.00e-03
+Epoch  11 | train loss MSE      0.94 | val loss MSE      1.09 | lr 1.00e-03
+Epoch  12 | train loss MSE      0.94 | val loss MSE      1.09 | lr 1.00e-03
+Epoch  13 | train loss MSE      0.94 | val loss MSE      1.09 | lr 1.00e-03
+Epoch  14 | train loss MSE      0.94 | val loss MSE      1.09 | lr 1.00e-03
+Epoch  15 | train loss MSE      0.94 | val loss MSE      1.09 | lr 1.00e-03
+Epoch  16 | train loss MSE      0.94 | val loss MSE      1.09 | lr 1.00e-03
+Epoch  17 | train loss MSE      0.95 | val loss MSE      1.09 | lr 1.00e-03
+Epoch  18 | train loss MSE      0.94 | val loss MSE      1.09 | lr 1.00e-04
+Epoch  19 | train loss MSE      0.91 | val loss MSE      1.08 | lr 1.00e-04
+Epoch  20 | train loss MSE      0.91 | val loss MSE      1.08 | lr 1.00e-04
+Epoch  21 | train loss MSE      0.89 | val loss MSE      1.08 | lr 1.00e-04
+Epoch  22 | train loss MSE      0.89 | val loss MSE      1.08 | lr 1.00e-04
+Epoch  23 | train loss MSE      0.89 | val loss MSE      1.08 | lr 1.00e-04
+Epoch  24 | train loss MSE      0.89 | val loss MSE      1.08 | lr 1.00e-04
+Epoch  25 | train loss MSE      0.88 | val loss MSE      1.09 | lr 1.00e-04
+Epoch  26 | train loss MSE      0.89 | val loss MSE      1.08 | lr 1.00e-04
+Epoch  27 | train loss MSE      0.89 | val loss MSE      1.08 | lr 1.00e-05
+Epoch  28 | train loss MSE      0.88 | val loss MSE      1.08 | lr 1.00e-05
+Epoch  29 | train loss MSE      0.87 | val loss MSE      1.08 | lr 1.00e-05

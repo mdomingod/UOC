@@ -1,0 +1,25 @@
+=== Run started: 2026-06-01T21:18:25.110880 ===
+Output directory: /home/domingom/projects/SPE_Primer_Alignments/reports/2026-06-01_211824_baseline_onerun_train_val_test_splitbyPrimer_bs600_ep50_lr1e-3_v1
+
+MLflow run ID: c518f09fc9d6413895d7148f1e756d23
+
+[1/5] Loading data...
+  Found 22 npz files
+  Total alignments: 1,279,693
+  Unique primers:   18,584
+  Unique panels:    8
+Zero-UMI:     684,118  (53.5%)
+Positive-UMI: 595,575  (46.5%)
+
+[2/5] Splitting at Primer level...
+  Unique primers in train: 13,009
+  Unique primers in val:   5,575
+  Primers overlap:          0 ✓
+Label Train — mean: 26.36, std: 362.57, zeros: 52.6%, max: 52802, p99: 635 
+Label Val   — mean: 28.84, std: 389.24, zeros: 55.8%, max: 51513, p99: 658 
+
+Expected val MSE for zero-predictor: 1.1526
+Using device: cpu
+Train: 921445 sites | Val: 358248 sites | 
+[3/5] Training one run...
+Pre-training preds: min=-0.0066, max=-0.0051, Mean ± Std:    -0.0059 ± 0.0003%zero=0.0%
