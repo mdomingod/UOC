@@ -1,0 +1,41 @@
+# Virtual env
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# MLflowm runs
+mlruns/
+*.db
+
+# Data
+data/
+
+# reports
+reports/
+report_test/
+
+test_set_2_data_quality_reports_01f/
+sample_set_2_data_quality_reports_01f/
+
+# NPZ files
+*.npz
+*report.md
+*.json

@@ -1,0 +1,39 @@
+(CNN_Primer_Off-Target_Rate_Prediction_project) domingom@QIAYYA9K654rgDx:~/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/scripts$ ./01f_align_collap_encode_and_metada_1.py
+processing the file:   0%|                                                                                                                                                                         | 0/2 [00:00<?, ?it/s]Dropping 0 rows with non-ACGT characters (0.00%)
+  - 0 rows due to primer
+  - 0 rows due to genomic_seq
+  - 0 rows due to both
+Sample primers with non-ACGT:
+[]
+
+Sample genomic_seqs with non-ACGT:
+[]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 22/22 [00:00<00:00, 1383.93it/s]
+Saved: /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/reports/sample_set_2_data_quality_reports_01f/data_quality_report.md                                             | 0/22 [00:00<?, ?it/s]
+Saved: /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/reports/sample_set_2_data_quality_reports_01f/data_quality_report.json
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 21/21 [00:00<00:00, 7427.93it/s]
+Dropping 0 rows with non-ACGT characters (0.00%)                                                                                                                                                  | 0/21 [00:00<?, ?it/s]
+  - 0 rows due to primer
+  - 0 rows due to genomic_seq
+  - 0 rows due to both
+Sample primers with non-ACGT:
+[]
+
+Sample genomic_seqs with non-ACGT:
+[]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:00<00:00, 1684.60it/s]
+Saved: /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/reports/test_set_2_data_quality_reports_01f/data_quality_report.md                                               | 0/19 [00:00<?, ?it/s]
+Saved: /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/reports/test_set_2_data_quality_reports_01f/data_quality_report.json
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:00<00:00, 8813.51it/s]
+processing the file: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00, 28.24it/s]
+(CNN_Primer_Off-Target_Rate_Prediction_project) domingom@QIAYYA9K654rgDx:~/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/scripts$ chmod +x 01f_verify_npz_imglab.py
+(CNN_Primer_Off-Target_Rate_Prediction_project) domingom@QIAYYA9K654rgDx:~/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/scripts$ ls
+01f_align_collap_encode_and_metada_1.py  01f_verify_npz_imglab.py  README.md  __init__.py  __pycache__  data_quality_report.py  eda_alignments.py  eda_outputs  eda_outputs_epcr07+exp01  mlflow.db  preprocessing_scripts
+(CNN_Primer_Off-Target_Rate_Prediction_project) domingom@QIAYYA9K654rgDx:~/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/scripts$ ./01f_verify_npz_imglab.py
+processing the file:   0%|                                                                                                                                                                            | 0/2 [00:00<?, ?it/s]OK — 21 examples, file size 0.0 MB, labels in [min: 0.0, max: 67.0]
+OK — Sites IDs: 21 unique,OK — Primer: 11 unique,Is Target distribution: [14  7],Panel ID: None
+OK — 19 examples, file size 0.0 MB, labels in [min: 1.0, max: 239.0]
+OK — Sites IDs: 19 unique,OK — Primer: 8 unique,Is Target distribution: [12  7],Panel ID: test_set
+processing the file: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00, 124.90it/s]
+(CNN_Primer_Off-Target_Rate_Prediction_project) domingom@QIAYYA9K654rgDx:~/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/scripts$ cd /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/dada/processed/images_labels_CollapsedAlign01f_npz
+(CNN_Primer_Off-Target_Rate_Prediction_project) domingom@QIAYYA9K654rgDx:~/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/dada/processed/images_labels_CollapsedAlign01f_npz$ cp sample_set_2_images_and_labels_uint8_.npz /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/dada/hold_out_test/
