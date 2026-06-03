@@ -60,7 +60,7 @@ Once executed, a json file "{name}_metadata.json" and npz file "{name}_images_an
 Once executed, once folder for each image_label_uint_8.npz is generated inside "reports" folder.
 Inside the "reports" folder, there will be the data_quality_report in both markdown and json format.
 
-On /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/logs/terminal_print_01f.txt it has been pasted the output terminal from the avobes code execution.
+On /home/domingom/projects/UOC/CNN_Primer_Off_Target_Rate_Prediction_project/logs/terminal_print_01f.txt it has been pasted the output terminal from the avobe code execution.
 
 ## 2. Training a model
 Note: Since the data used for the development of this project and hence the CNN training is confidencial, 
@@ -76,6 +76,7 @@ Move the test_set_2 file into hold_out_test_data and remove it from processed di
 ### one_run_bypanel.py
 - `cd /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/`
 - `chmod +x one_run_bypanel.py`
+- `./one_run_primer.py`
 
 
 

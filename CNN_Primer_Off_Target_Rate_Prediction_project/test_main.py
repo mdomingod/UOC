@@ -62,6 +62,9 @@ def main():
     cfg.learning_rate = 1e-3
     cfg.allow_negative_output = True  
     cfg.seed = 42
+
+    device = get_device(cfg.device)
+
     print("[5/5] Evaluating on test set...")
     npz_files_test = sorted(cfg.data_test_dir.glob("*.npz"))
     test_data = load_npz_files(npz_files_test)
@@ -79,15 +82,19 @@ def main():
         f"({100 * (data['labels'] > 0).mean():.1f}%)")
     print()
 
+    #  mean: 61.85, std: 186.56 for DHS001Z_SplitByPrimer_tv04_bs600_ep50_lr1e-4
+    # mean: 27.74, std: 381.55 splitbyPanel_bs600_ep50_lr1e-4_v1
+
+
     run_test(
         cfg,
         test_data=test_data,
         source={"model": model},
         run_name=cfg.run_name,
-        run_dir_test=cfg.runs_dir / cfg.run_name,
+        run_dir_test=cfg.run_dir_test,
         y_mean=cfg.y_mean,
         y_std=cfg.y_std,
-        device=cfg.device,
+        device=device,
         
 
     )
