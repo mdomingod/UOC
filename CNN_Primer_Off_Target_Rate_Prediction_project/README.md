@@ -34,8 +34,8 @@ This will be done automatically by git and a warning message will be displayed o
 2. Create a uv enviroment (ONLY THE FIRST TIME). 
 Skip this step if the repo has already an enviroment created (.venv exits in repo) and go ahead to the next step.
     - Create pyproject.toml: `uv init` (skip if pyproject exists in repo)
-    - Create the environment: `uv venv` 
-    - Install the requirments.txt: `uv add -r requirements.txt` (skip if pyproject.toml and uv.lock exist)
+    - Create the enviroment: `uv venv` 
+    - Install the requirements.txt: `uv add -r requirements.txt` (skip if pyproject.toml and uv.lock exist)
 
 3. Install dependencies: `uv sync`
 Only if the project has already pyproject.toml
