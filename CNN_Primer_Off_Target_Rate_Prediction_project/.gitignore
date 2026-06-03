@@ -39,3 +39,4 @@ sample_set_2_data_quality_reports_01f/
 *.npz
 *report.md
 *.json
+*:Zone.Identifier
