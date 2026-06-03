@@ -1,153 +1,143 @@
-# Introduction 
-This project focuses on building and training a Convolutional Neural Network (CNN) for the prediction of primer off-target rate given a DNA target and a primer.
-The model is track by MLflow and trained by the alignments encoded into an images and the number of umi counts which are used to get the off-target rate.
+# CNN — Primer Off-Target Rate Prediction
 
-# Getting Started
-Important Note: pysam python library is not supported by windows so for Windows operation systems is required the use of WSL (Windows Subsystem for Linux).
+## Introduction
 
-## 1. Installation Process
+This project builds and trains a Convolutional Neural Network (CNN) for the prediction of primer off-target rate, given a DNA target and a primer. The model is tracked with MLflow and trained on alignments encoded as images, using the number of UMI counts at each site, from which the off-target rate is derived.
 
-### ⚠️ Windows + WSL Notes
-If you are working on Windows using WSL (Windows Subsystem for Linux), there are a few important considerations to ensure the project runs correctly.
+Throughout this document, `$PROJECT_ROOT` refers to the root directory of the repository (the folder containing `pyproject.toml` and `README.md`). Replace it with the actual path on your machine, or export it once:
 
-#### 📁 Repository Location
-When cloning this repository on Windows, it is strongly recommended to place it inside the WSL filesystem:  
-- Copy the https or ssh direction from GitHub and git clone into "home/<your-user>/".
+```bash
+export PROJECT_ROOT=~/CNN_Primer_Off_Target_Rate_Prediction_project
+```
 
-- Connect to WSL and then open the repository directory in WSL enviroment:  [WSL:Ubuntu-24.04] terminal on visual studio code.
-    - To connect to WSL: enter `>` symbol into the task bar and select `WSL: Connect to WSL` (The WSL extionsion is required to be installed).  
+---
 
-- Line Ending Differences (CRLF vs LF). Operating systems use different line endings:
-Windows → CRLF
-Linux (WSL) → LF
-**Scripts must use LF endings to execute correctly in WS**  
+## Getting started
 
--  After script execution and outputs generation, scripts my revert to CRLF when pushed from Windows environments. 
-This will be done automatically by git and a warning message will be displayed on the terminal.
+> **Important:** the `pysam` Python library is not supported on Windows. On Windows, the project must be run under **WSL (Windows Subsystem for Linux)**.
 
+### Windows + WSL notes
 
-### This repo uses UV enviroment:
-- Open the repository folder by an interface as Visual Studio code.
-1. install uv () (in case you don't have it already installed)
-    - linux/mac: `curl -LsSf https://astral.sh/uv/install.sh | sh`  
+If you are working on Windows using WSL, a few considerations ensure the project runs correctly.
 
-2. Create a uv enviroment (ONLY THE FIRST TIME). 
-Skip this step if the repo has already an enviroment created (.venv exits in repo) and go ahead to the next step.
-    - Create pyproject.toml: `uv init` (skip if pyproject exists in repo)
-    - Create the enviroment: `uv venv` 
-    - Install the requirements.txt: `uv add -r requirements.txt` (skip if pyproject.toml and uv.lock exist)
+**Repository location.** Place the repository inside the WSL filesystem:
 
-3. Install dependencies: `uv sync`
-Only if the project has already pyproject.toml
-    - pyproject.toml (declares dependencies)
-    - uv.lock (freezes exact versions)      
+- Copy the HTTPS or SSH URL from GitHub and `git clone` it into `~/` (i.e. `/home/<your-user>/`).
+- Open the repository in the WSL environment: in Visual Studio Code, type `>` in the command bar and select **WSL: Connect to WSL** (the WSL extension must be installed).
 
-4. Activate venv: `source .venv/bin/activate`   
+**Line endings (CRLF vs LF).** Operating systems use different line endings — Windows uses CRLF, Linux (WSL) uses LF. **Scripts must use LF endings to execute correctly in WSL.** After scripts are executed and outputs are generated, files may revert to CRLF when pushed from a Windows environment; Git handles this automatically and prints a warning on the terminal.
 
-5. Install more libraries: `uv add <library>` (e.g. `uv add scikit-learn`)  
+---
 
-## 1. Data processing pipeline to generate images from the alignments.
-- create two folders, one named "reports" and the other one named "report_test"
-### 01f_align_collap_encode_and_metada_1.py
-- `cd scripts`
-- `chmod +x 01f_align_collap_encode_and_metada_1.py` (skip if the files has already rights to be executed)
-- `./01f_align_collap_encode_and_metada_1.py`
-Once executed, a json file "{name}_metadata.json" and npz file "{name}_images_and_labels_uint8_.npz" will be generated for each raw data {names}_alignment.csv file.
+## 1. Installation
 
-### 01f_verify_npz_imglab.py
-- `chmod +x 01f_verify_npz_imglab.py` (skip if the files has already rights to be executed)
-- `./01f_verify_npz_imglab.py`
-Once executed, once folder for each image_label_uint_8.npz is generated inside "reports" folder.
-Inside the "reports" folder, there will be the data_quality_report in both markdown and json format.
+This repository uses the **`uv`** environment manager.
 
-On /home/domingom/projects/UOC/CNN_Primer_Off_Target_Rate_Prediction_project/logs/terminal_print_01f.txt it has been pasted the output terminal from the avobe code execution.
+1. Install `uv` (if not already installed):
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh   # Linux / macOS
+   ```
 
-## 2. Training a model
-Note: Since the data used for the development of this project and hence the CNN training is confidencial, 
-the repo has been prepared to perfom a mock model trained with just few images inside one npz file and
-therefore the trained models developed during the project will be tested with "test_set_2_images_and_labeñs_uint8_.npz.
+2. **First time only** — create the environment. Skip this step if the repository already contains a `.venv` and a `uv.lock`, and go straight to step 3.
+   ```bash
+   uv init        # create pyproject.toml (skip if it already exists)
+   uv venv        # create the virtual environment
+   uv add -r requirements.txt   # install from requirements.txt (skip if pyproject.toml and uv.lock exist)
+   ```
 
-Move the test_set_2 file into hold_out_test_data and remove it from processed directory:
- - `cd /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/dada/processed/images_labels_CollapsedAlign01f_npz`
- - `cp test_set_2_images_and_labels_uint8_.npz /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/dada/hold_out_test_data/`
- - `rm test_set_2_images_and_labels_uint8_.npz`
- - `cd /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/`
+3. Install dependencies from the locked specification:
+   ```bash
+   uv sync        # uses pyproject.toml (declared deps) + uv.lock (pinned versions)
+   ```
 
-### one_run_bypanel.py
-- `cd /home/domingom/projects/UOC/CNN_Primer_Off-Target_Rate_Prediction_project/`
-- `chmod +x one_run_bypanel.py`
-- `./one_run_primer.py`
+4. Activate the environment:
+   ```bash
+   source .venv/bin/activate
+   ```
 
+5. Add further libraries as needed:
+   ```bash
+   uv add <library>     # e.g. uv add scikit-learn
+   ```
 
+---
 
+## 2. Data-processing pipeline (alignments → images)
 
+Ensure the `reports/` and `report_test/` folders exist (create them if not).
 
-## Software dependencies and Latest releases
+### `01f_align_collap_encode_and_metada_1.py`
 
-Check "pyproject.toml" file:
+```bash
+cd $PROJECT_ROOT/scripts
+chmod +x 01f_align_collap_encode_and_metada_1.py   # skip if already executable
+./01f_align_collap_encode_and_metada_1.py
+```
 
-dependencies = [
-    "biopython==1.86",
-    "contourpy==1.3.0",
-    "cycler==0.12.1",
-    "fonttools==4.60.2",
-    "importlib-resources==6.5.2",
-    "iprogress>=0.4",
-    "kiwisolver==1.4.7",
-    "matplotlib>=3.10.8",
-    "mlflow>=1.27.0",
-    "nbconvert>=7.17.0",
-    "notebook>=7.5.5",
-    "numpy>=2.4.3",
-    "packaging==25.0",
-    "pandas>=3.0.1",
-    "pillow>=12.1.1",
-    "pyparsing==3.3.1",
-    "pysam>=0.23.3",
-    "python-dateutil==2.9.0.post0",
-    "pytz==2025.2",
-    "regex>=2026.4.4",
-    "seaborn>=0.13.2",
-    "six==1.17.0",
-    "torch>=2.12.0",
-    "torchvision>=0.27.0",
-    "tqdm>=4.67.3",
-    "tzdata==2025.3",
-    "zipp==3.23.0",
-]
+For each raw `{name}_alignments.csv` file, this generates a metadata file `{name}_metadata.json` and an encoded array `{name}_images_and_labels_uint8_.npz`.
 
-Make sure you already added this to pyproject.toml:
-[tool.setuptools.packages.find]
-where = ["src"]
-Otherwise uv won’t know where your code is.
+### `01f_verify_npz_imglab.py`
 
-Install the project in editable mode with `uv pip install -e .` so Python can import your package directly from the src directory and reflect changes instantly.
+```bash
+chmod +x 01f_verify_npz_imglab.py   # skip if already executable
+./01f_verify_npz_imglab.py
+```
 
+For each `{name}_images_and_labels_uint8_.npz`, this writes a per-file folder inside `reports/`, and a data-quality report (in both Markdown and JSON) summarising the encoded data.
 
+The terminal output of this step is recorded in `logs/terminal_print_01f.txt`.
 
+---
 
-## API references
+## 3. Training a model
 
- MLflow API 
-`mlflow.set_experiment("name")`           # Group runs together (e.g., all baseline runs)
-`mlflow.start_run(run_name="...")`        # Start tracking a run
-`mlflow.log_param(key, value)`            # Log one parameter
-`mlflow.log_params(dict)`                 # Log many parameters at once
-`mlflow.log_metric(key, value, step=N)`   # Log one metric, optionally at a specific step (epoch)
-`mlflow.log_metrics(dict, step=N)`        # Log many metrics at once
-`mlflow.log_artifact(filepath)`           # Log a file (model, report, plot)
-`mlflow.end_run()`                        # Stop tracking (auto-called if using context manager)
+> **Note:** the data used to develop this project (and to train the CNN) is confidential. The repository is therefore prepared to run a mock model trained on a few images in a single `.npz` file; the models developed during the project are evaluated on `test_set_2_images_and_labels_uint8_.npz`.
 
+Move the test set into the held-out test folder and remove it from the processed directory:
 
-Command to check MLFlow ui:  `mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5000`
+```bash
+cd $PROJECT_ROOT/dada/processed/images_labels_CollapsedAlign01f_npz
+cp test_set_2_images_and_labels_uint8_.npz $PROJECT_ROOT/dada/hold_out_test_data/
+rm test_set_2_images_and_labels_uint8_.npz
+cd $PROJECT_ROOT
+```
 
-# Build and Test
-Since 
+Then run one of the three experiment scripts from the project root:
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+```bash
+chmod +x one_run_bypanel.py one_run_byprimer.py one_run_DHS001z.py   # skip if already executable
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+./one_run_bypanel.py     # panel-disjoint split (generalisation to unseen panels)
+./one_run_byprimer.py    # primer-disjoint split (generalisation to unseen primers)
+./one_run_DHS001z.py     # single-panel pilot (DHS-001Z)
+```
+
+Each run trains the model with MLflow tracking and evaluates it once on the held-out test data. Outputs are written to `reports/` (training), `report_test/` (held-out test) and `outputs/` (figures), and logged to the MLflow store (`mlflow.db`).
+
+---
+
+## Repository layout
+
+```
+$PROJECT_ROOT/
+├── dada/                              data
+│   ├── raw/                           {name}_alignments.csv source files
+│   ├── processed/
+│   │   └── images_labels_CollapsedAlign01f_npz/   encoded .npz inputs
+│   └── hold_out_test_data/            held-out test .npz
+├── scripts/                           preprocessing (encode + verify)
+├── src/project_package/               core library
+│   ├── config.py  data.py  model.py  train.py  evaluate.py  test.py
+│   ├── cross_validation.py  utils.py
+│   └── tests/                         unit / smoke tests
+├── one_run_bypanel.py                 panel-disjoint experiment
+├── one_run_byprimer.py                primer-disjoint experiment
+├── one_run_DHS001z.py                 single-panel pilot
+├── models/                            saved trained models (.pt)
+├── reports/  report_test/  outputs/   run artifacts and figures
+├── logs/                              terminal logs
+├── mlflow.db                          MLflow tracking store
+├── pyproject.toml  uv.lock            environment specification
+├── requirements.txt                   dependency list (used at first setup)
+└── README.md
+```
