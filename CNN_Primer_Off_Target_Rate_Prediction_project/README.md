@@ -47,6 +47,7 @@ Only if the project has already pyproject.toml
 5. Install more libraries: `uv add <library>` (e.g. `uv add scikit-learn`)  
 
 ## 1. Data processing pipeline to generate images from the alignments.
+- create two folders, one named "reports" and the other one named "report_test"
 ### 01f_align_collap_encode_and_metada_1.py
 - `cd scripts`
 - `chmod +x 01f_align_collap_encode_and_metada_1.py` (skip if the files has already rights to be executed)
