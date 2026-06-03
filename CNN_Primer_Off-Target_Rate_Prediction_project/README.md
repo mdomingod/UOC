@@ -14,7 +14,8 @@ If you are working on Windows using WSL (Windows Subsystem for Linux), there are
 When cloning this repository on Windows, it is strongly recommended to place it inside the WSL filesystem:  
 - Copy the https direction from GitHub and git clone into "home/<your-user>/".
 
-- Open the repo with [WSL:Ubuntu-24.04] terminal.
+- Open the repository directory in WSL enviroment, [WSL:Ubuntu-24.04] terminal.
+The use of Visual Code Studio is good option.
 
 
 - The first time to `git pull`, `git add`, `git commit -m` and `git push` on git bash, a message will appear asking the ownership exception to execute git commands to explicitly trust that repository so Git can allow operations on it.

@@ -23,6 +23,7 @@ Thumbs.db
 
 # MLflowm runs
 mlruns/
+*.db
 
 # Data
 data/
