@@ -104,7 +104,7 @@ To keep the project reproducible and reviewable without that data, the repositor
 A trained model can be run on encoded data using the inference script, which loads a saved model, prepares the input exactly as in training, and prints predicted UMI counts:
 
 ```bash
-python <PATH_TO_INFER_SCRIPT> \
+python <PATH_TO_INFERENCE_SCRIPT> \
     models/<MODEL_NAME>.pt \
     dada/hold_out_test_data/test_set_2_images_and_labels_uint8_.npz \
     <y_mean> <y_std>
