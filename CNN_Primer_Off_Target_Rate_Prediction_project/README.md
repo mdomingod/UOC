@@ -89,30 +89,40 @@ The terminal output of this step is recorded in `logs/terminal_print_01f.txt`.
 
 ---
 
-## 3. Training a model
+## 3. Data availability and reproducibility
 
-> **Note:** the data used to develop this project (and to train the CNN) is confidential. The repository is therefore prepared to run a mock model trained on a few images in a single `.npz` file; the models developed during the project are evaluated on `test_set_2_images_and_labels_uint8_.npz`.
+> **Note:** the data used to develop this project — and therefore to train the CNN — is **confidential and is not included** in this repository.
 
-Move the test set into the held-out test folder and remove it from the processed directory:
+To keep the project reproducible and reviewable without that data, the repository provides:
+
+- a **few example encoded files** (`sample_set_*` and `test_set_2`). These are intentionally small and are **not** sufficient to train a meaningful model; they exist only to demonstrate that the pipeline and scripts run end to end.
+- the **trained models** (the `.pt` files in `models/`), so the model can be exercised directly, via inference, without access to the confidential data (see Section 4).
+- the **complete source code, scripts and configuration**, so the full method can be reviewed even though the original training cannot be reproduced on the real data.
+
+## 4. Running inference on a trained model
+
+A trained model can be run on encoded data using the inference script, which loads a saved model, prepares the input exactly as in training, and prints predicted UMI counts:
 
 ```bash
-cd $PROJECT_ROOT/dada/processed/images_labels_CollapsedAlign01f_npz
-cp test_set_2_images_and_labels_uint8_.npz $PROJECT_ROOT/dada/hold_out_test_data/
-rm test_set_2_images_and_labels_uint8_.npz
-cd $PROJECT_ROOT
+python <PATH_TO_INFER_SCRIPT> \
+    models/<MODEL_NAME>.pt \
+    dada/hold_out_test_data/test_set_2_images_and_labels_uint8_.npz \
+    <y_mean> <y_std>
 ```
 
-Then run one of the three experiment scripts from the project root:
+`<y_mean>` and `<y_std>` are the training label statistics for that model (printed by the corresponding `one_run_*.py` script when the model was trained); they are required to convert the model's normalised output back into UMI counts.
 
-```bash
-chmod +x one_run_bypanel.py one_run_byprimer.py one_run_DHS001z.py   # skip if already executable
+Inside models directory are placed "training_log.txt" which collect the mean and the std from train dataset needed for the models inference.
+Here there's a summary detailing the related mean and std for each model trained:
 
-./one_run_bypanel.py     # panel-disjoint split (generalisation to unseen panels)
-./one_run_byprimer.py    # primer-disjoint split (generalisation to unseen primers)
-./one_run_DHS001z.py     # single-panel pilot (DHS-001Z)
-```
+-> model: byPanel_bs550_ep30_lr3e-3, mean: 39.35, std: 493.30.
+-> model: byPanel_bs600_ep50_lr1e-4, mean: 27.74, std: 381.55.
+-> model: byPrimer_bs600_ep50_lr1e-3, mean: 26.36, std: 362.57.
+-> model: ByPrimer_tv04_bs600_ep50_lr1e-4, mean: 61.85, std: 186.56.
+-> model: ByPrimer_tv04_bs600_ep50_lr1e-4, mean: 61.85, std: 186.56.
 
-Each run trains the model with MLflow tracking and evaluates it once on the held-out test data. Outputs are written to `reports/` (training), `report_test/` (held-out test) and `outputs/` (figures), and logged to the MLflow store (`mlflow.db`).
+
+
 
 ---
 
@@ -130,6 +140,8 @@ $PROJECT_ROOT/
 │   ├── config.py  data.py  model.py  train.py  evaluate.py  test.py
 │   ├── cross_validation.py  utils.py
 │   └── tests/                         unit / smoke tests
+|    
+├── inference.py                  
 ├── one_run_bypanel.py                 panel-disjoint experiment
 ├── one_run_byprimer.py                primer-disjoint experiment
 ├── one_run_DHS001z.py                 single-panel pilot
